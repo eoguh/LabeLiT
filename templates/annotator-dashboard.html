@@ -1,0 +1,328 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+{% endblock %}
+
+{% block title %}
+  | Annotator Dashboard
+{% endblock %}
+
+{% block content %}
+{% load static %}
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="{% static 'assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'annotator-dashboard' %}">Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                {% comment %} <a class="nav-link" href="{% url 'annotator-projects' %}">Projects</a> {% endcomment %}
+                {% comment %} <a class="nav-link" href="{% url '' %}">Projects</a> {% endcomment %}
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Edit account name</a></li>
+                  <li><a class="dropdown-item" href="#">Change profile picture</a></li>
+                  <li>
+                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                  <li>
+                    
+                    <hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete account</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Team</a></li>
+                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+      <main>
+        <div class="welcome my-box rounded p-2 px-4">
+
+          <div class="welcome-first my-box-2">
+
+          <h1 class="h1" style="font-size: 30px; white-space: nowrap;">Welcome, <span style="color:#2061c5; font-weight: bolder;"> Adedero</span></h1>
+          
+          <p>Joined projects: <span>12</span></p>
+
+          <p>Images annotated: <span>19</span></p>
+
+          <p style="margin-bottom: 20px;">Created projects: <span>2</span></p>
+
+          <button type="button" class="btn btn-outline-primary rounded w-40">Sign in</button> as Creator
+          </div>
+
+          <div class="dashboard-image">
+
+            <img class="img-fluid" src="{% static 'assets/face id.png' %}" alt="">
+          </div>
+
+          
+        </div>
+
+
+
+        <div class="accordion d-md-none" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="sb-h5">Account Details</h5>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p class="acc-dets">First name: <span class="values">Andrew</span></p>
+
+              <p class="acc-dets">Last name: <span class="values">Adedero</span></p>
+
+              <p class="acc-dets">Email: <span class="values">andrewadedero@gmail.com</span></p>
+
+              <p class="acc-dets">Account type: <span class="values">Annotator</span></p>
+
+              <p class="acc-dets">Annotator ID: <span class="values">AA1101211212</span></p>
+
+              <p class="acc-dets">Creation date: <span class="values">12/06/2022</span></p>
+              </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="account-details my-box rounded p-2 px-4 d-none d-md-block">
+          <h4 class="h4 text-white">Account details</details></h4>
+
+          <div class="account-main">
+
+            <div class="account-twin my-box">
+              <p class="acc-dets">First name: <span class="values">Andrew</span></p>
+
+              <p class="acc-dets">Last name: <span class="values">Adedero</span></p>
+
+              <p class="acc-dets">Email: <span class="values">andrewadedero@gmail.com</span></p>
+            </div>
+
+
+            <div class="account-twin my-box">
+              <p class="acc-dets">Account type: <span class="values">Annotator</span></p>
+
+              <p class="acc-dets">Annotator ID: <span class="values">AA1101211212</span></p>
+
+              <p class="acc-dets">Creation date: <span class="values">12/06/2022</span></p>
+            </div>
+          </div>  
+
+          <button type="button" class="logout-btn">Sign out</button>
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Joined Projects</h5>
+          <h5 class="small-box-h5">44  <span class="percent">45%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+           <p class="progress-number">Completed: <span class="good">30</span></p>
+            <p class="progress-number">Ongoing: <span class="bad">4</span></p>
+          </div>
+
+          <p class="new-p">
+            <a href = "#" class="new">
+              <span>
+                <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+              </span> Join new project
+            </a>
+          </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Images</h5>
+          <h5 class="small-box-h5">201 <span class="percent">87%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Labeled: <span class="good">190</span></p>
+             <p class="progress-number">Unlabeled: <span class="bad">11</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <i class="fa fa-arrow-left"></i>
+               </span> View images
+             </a>
+           </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Created Projects</h5>
+          <h5 class="small-box-h5">569 <span class="percent">25%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Completed: <span class="good">553</span></p>
+             <p class="progress-number">Ongoing: <span class="bad">16</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+               </span>Create new project
+             </a>
+           </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Annotators</h5>
+          <h5 class="small-box-h5">12 <span class="percent">30%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Assigned: <span class="good">3</span></p>
+             <p class="progress-number">Idle: <span class="bad">9</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+               </span> Add new annotator
+             </a>
+           </p>
+
+        </div>
+
+
+        <div class="recents rounded my-box">
+          <h5 class="sb-h5">Recent projects</h5>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Project</th>
+                <th scope="col">Images</th>
+                <th scope="col">Annotators</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">Tropical Diseases</p>
+                  <p style="font-size: smaller; margin:0">Created: <span>12-Jan-2023</span></p>
+                </td>
+                <td>34</td>
+                <td>115</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">Automobiles</p>
+                  <p style="font-size: smaller; margin:0">Created: <span>3-Jan-2023</span></p>
+                </td>
+                <td>47</td>
+                <td>191</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">Fruits</p>
+                  <p style="font-size: smaller; margin:0">Created: <span>1-Dec-2022</span></p>
+                </td>
+                <td>66</td>
+                <td>128</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="recents rounded my-box">
+          <h5 class="sb-h5">Recent imagees</h5>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Project</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">09091.jpg</p>
+                  <p style="font-size: smaller; margin:0">Added: <span>22-Jan-2023</span></p>
+                </td>
+                <td>Tropical Diseases</td>
+                <td>Unlabeled</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="{% static 'assets/Annotator2.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">8u8u9w2d.jpg`</p>
+                  <p style="font-size: smaller; margin:0">Added: <span>16-Dec-2022</span></p>
+                </td>
+                <td>Tropical Diseases</td>
+                <td>Unlabeled</td>
+              </tr>
+
+              <tr>
+                <th scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt="folder-icon" width="40px"></th>
+                <td><p style="font-weight: 500; margin:0">ieuixd.png</p>
+                  <p style="font-size: smaller; margin:0">Added: <span>1-Dec-2022</span></p>
+                </td>
+                <td>Automobiles</td>
+                <td>Unlabeled</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </main>
+
+      <script src="bootstrap/js/bootstrap.min.js"></script> 
+
+{% endblock %}

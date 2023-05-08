@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/creator-dashboard.css">
+    <link rel="stylesheet" href="styles/labeling-page.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+
+    <title>Labeling Page</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="assets/logo.png" alt="labelit-logo" width="50px"> LabeliT</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="annotator-dashboard.html">Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="annotator-projects.html">Projects</a>
+              </li>
+
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Edit account name</a></li>
+                  <li><a class="dropdown-item" href="#">Change profile picture</a></li>
+                  <li>
+                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                  <li>
+                    
+                    <hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete account</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Team</a></li>
+                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <section class="d-flex gap-4 p-2 align-items-center">
+
+        <h4 style="color:#2061c5; font-weight: bolder">Automobiles</h4>
+
+        <div> <input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Open" data-offlabel="Completed" data-onstyle="primary" data-offstyle="success" checked data-size="xs" disabled> </div>
+
+        <div class="top-icons rounded-pill" style="background-color: white; color:#a0a0a0; width: 50px; height: 90%; padding: 0 10px;">
+        <i class="fa fa-tags"></i>
+      
+      </div>
+      </section>
+
+
+      <main>
+
+        <div class="main-area">
+          <div class="lhs" id="image-container">
+
+            <select class="form-select" aria-label="Default select example">
+              <option selected>All</option>
+              <option value="1">Labeled</option>
+              <option value="2">Unlabeled</option>
+            </select>
+
+          
+            <img src="assets/Cars/car1.jpg" alt="">
+
+            <img src="assets/Cars/car2.jpg" alt="">
+
+            <img src="assets/Cars/car3.jpg" alt="">
+
+            <img src="assets/Cars/car3.jpg" alt="">
+
+            <img src="assets/Cars/car1.jpg" alt="">
+
+            <img src="assets/Cars/car2.jpg" alt="">
+
+          </div>
+
+
+          <div class="middle" id="target-div">
+
+          </div>
+
+          <div class="rhs">
+            
+            <div class="img-name">
+              <h6>Name:</h6>
+              <p id="current-image-name"></p>
+            </div>
+
+            <div class="label-and-save">
+
+              <label for="labels">Choose label</label>
+
+              <select class="form-select" aria-label="Default select example" name="labels">
+                <option selected>---</option>
+                <option value="1">BMW</option>
+                <option value="2">Mercedes Benz</option>
+                <option value="3">Chevrolet</option>
+              </select>
+            
+
+              <button name="button" class="save-btn">Save</button>
+
+            </div>
+
+            <div class="buttons">
+
+              <button type="button" class="btn-next" id="previous-button"><</button>
+
+              <button type="button" class="btn-next" id="next-button">></button>
+
+            </div>
+           
+
+            <div class="image-details">
+
+              <hr width="100%">
+              <h6>Project:</h6>
+              <p>Autombiles</p>
+              <hr width="100%">
+
+              <h6>Images:</h6>
+              <p>67</p>
+
+              <hr width="100%">
+
+              <h6>Progress: 45/67</h6>
+              <p>68%</p>
+              <div class="p-bar">
+                <div class="p-indicator"></div>
+              </div>
+
+              
+              <br>
+
+
+              <h6>
+                
+                <button class="btn btn-outline-light text-start btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                  Project description
+                </button>
+              </h6>
+             
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+
+                  <p>
+                    Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                  </p>
+                  
+                </div>
+              </div>
+              <br>
+
+              <h6>Added:</h6>
+              <p>12-June-2022</p>
+              <hr width="100%">
+
+              <h6>Last modified:</h6>
+              <p>12-June-2022</p>
+              <hr width="100%">
+            </div>
+
+
+          </div>
+
+
+        </div>
+      </main>
+
+      <script src="scripts/labeling page.js"></script>
+
+      
+   <script src="bootstrap/js/bootstrap.min.js"></script> 
+
+   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+</body>
+</html>

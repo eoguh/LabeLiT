@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+
+    <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/creator-projects.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/creator-annotator.css' %}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+  | SignIn
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <title>Created Projects</title>
+</head>
+<body>
+  
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="{% static 'assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="creator-dashboard.html">Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="creator-projects.html">Projects</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="creator-annotators.html">Annotators</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Edit account name</a></li>
+                  <li><a class="dropdown-item" href="#">Change profile picture</a></li>
+                  <li>
+                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                  <li>
+                    
+                    <hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete account</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Team</a></li>
+                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+      <div class="overlay" id="myNav">
+
+
+      <div class="new-project-popup" id="popup">
+        <div class="popup-header d-flex">
+          <h6 style="color: #2061c5; font-size: 18px; font-weight: 700;">New Annotator</h6>
+
+          <i id= "popup-exit" class="fa fa-close"></i>
+          
+        </div>
+        <hr width="100%">
+
+        <form action="" method="get" id="newProjectForm">
+          <label for="title">Email<span style="color: red;">*</span></label>
+          <br>
+          <p>Separate multiple emails with a comma: e.g "john@email.com, joe@email.com"</p>
+
+          <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
+
+          <label for="description">Message (optional)</label><br>
+
+          <textarea class="rounded" type="text" id="description" name="description" form="newProjectForm" cols="30px" rows="10px" maxlength="250"></textarea>
+          
+          <br><br>
+          <input class="rounded" type="submit" value="Invite" onclick="addAnnotator()">
+        </form> 
+      </div>
+    </div>
+
+
+    <main>
+
+        <div class="heading">
+          <h2 style="color:#2061c5">Annotators</h2>
+        </div>
+
+        <div class="heading d-flex gap-4">
+          <button class="button" id="new-annotator"><i class="fa fa-plus"></i> Add</button>
+
+          <div class="select-options d-flex gap-4 rounded">
+            
+            <div class="select-icons">
+              <i class="fa fa-list"></i>
+            </div>
+
+            <div class="select-icons">
+            <i class="fa fa-trash"></i>
+            </div>
+            
+            <div class="select-dropdown">
+              <select class="form-select" aria-label="Default select example">
+                <option selected>All</option>
+                <option value="1">Assigned</option>
+                <option value="2">Idle</option>
+              </select>
+            </div>
+
+        </div>
+        
+
+    </main>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th></th>
+                <th scope="col">Annotator</th>
+                <th></th>
+                <th scope="col">Projects</th>
+                <th scope="col">Total images</th>
+                <th scope="col">Labeled images</th>
+                <th scope="col">Date added</th>
+                <th></th>
+                <th></th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for annotator in annotators %}
+            <tr>
+
+                <td> <input type="checkbox" name="" id="" class="checkbox"></td>
+
+                <td scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt=""></td>
+
+                <td>{{ annotator.user.first_name }} {{ annotator.user.last_name }}<br>
+                <a href="">{{annotator.user.email}}</a></td>
+
+                <td>12<br>
+                    <a href="">view project history</a></td>
+
+                <td id ="total-images" style="color:green">653</td>
+
+                <td id ="labeled-images" style="color:red">653</td>
+
+                <td class="date-added">13-Jan-23 09:24 AM</td>
+
+                <td><i class="ri-user-shared-2-line" id="assign-to-project"></i></td>
+
+                <td><i class="ri-delete-bin-6-line" id="remove-annotator"></i></td>
+            </tr>
+            {% endfor %}
+
+
+            <tr>
+
+                <td> <input type="checkbox" name="" id="" class="checkbox"></td>
+
+                <td scope="row"><img src="{% static 'assets/Annotator2.png' %}" alt=""></td>
+
+                <td>John Boyega<br>
+                <a href="">jboyega@yahoo.com</a></td>
+
+                <td>12<br>
+                    <a href="">view project history</a></td>
+
+                <td id ="total-images" style="color:green">653</td>
+
+                <td id ="labeled-images" style="color:red">543</td>
+
+                <td class="date-added">13-Jan-23 09:24 AM</td>
+
+                <td><i class="ri-user-shared-2-line" id="assign-to-project"></i></td>
+
+                <td><i class="ri-delete-bin-6-line" id="remove-annotator"></i></td>
+            </tr>
+
+
+            <tr>
+
+                <td> <input type="checkbox" name="" id="" class="checkbox"></td>
+
+                <td scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt=""></td>
+
+                <td>Alex Hayman<br>
+                <a href="">alexhayman@gmail.com</a></td>
+
+                <td>12<br>
+                    <a href="">view project history</a></td>
+
+                <td id ="total-images" style="color:green">442</td>
+
+                <td id ="labeled-images" style="color:red">33</td>
+
+                <td class="date-added">13-Jan-23 09:24 AM</td>
+
+                <td><i class="ri-user-shared-2-line" id="assign-to-project"></i></td>
+
+                <td><i class="ri-delete-bin-6-line" id="remove-annotator"></i></td>
+            </tr>
+           
+            </tbody>
+        </table>
+
+    </div>
+
+
+    <script src="{% static 'scripts/creator-projects.js' %}"></script>
+
+    <script src="{% static 'scripts/creator-annotators.js' %}"></script>
+      
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
+   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+{% endblock %}

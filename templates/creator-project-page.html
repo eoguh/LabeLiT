@@ -1,0 +1,240 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/labeling-page.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/creator-project page.css' %}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+{% endblock %}
+
+{% block title %}
+  | {{ project.title }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="{% static 'assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'creators-dashboard' %}">Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'creators-projects' %}">Projects</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'creators-annotators' %}">Annotators</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Edit account name</a></li>
+                  <li><a class="dropdown-item" href="#">Change profile picture</a></li>
+                  <li>
+                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                  <li>
+                    
+                    <hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete account</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Team</a></li>
+                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+    </nav>
+
+    <section class="d-flex p-2 align-items-center flex-wrap">
+
+        <div class="d-flex align-items-baseline flex-wrap gap-2">
+            <h4 style="color:#2061c5; font-weight: bolder">Automobiles</h4>
+
+            <div>
+                <input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Open" data-offlabel="Completed" data-onstyle="primary" data-offstyle="success" checked data-size="xs">
+            </div>
+    
+            <div class="top-icons rounded-pill d-flex gap-3" style="background-color: white; color:#a0a0a0; width: auto; height: 100%; padding: 4px 10px;">
+    
+                <i class="fa fa-edit"></i>
+                <i class="fa fa-tags"></i>
+                <i class="fa fa-image"></i>
+                <i class="fa fa-user-plus"></i>
+                <i class="fa fa-arrow-up"></i>
+                <i class="fa fa-trash"></i>
+            </div>
+
+
+            <p>Images: <span>104</span></p>
+            <p>Annotators: <span>54</span></p>
+
+            <p>Progress: <span>68%</span>
+            </p>
+              
+              
+
+        </div>
+        
+
+
+       
+    </section>
+
+    <hr width="100%">
+
+    <div class="description">
+
+        <h5>  
+            <button class="btn btn-outline-light text-start btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+              Project description
+            </button>
+          </h5>
+         
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body">
+
+              <p>
+                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+              </p>
+              
+            </div>
+          </div>
+
+    </div>
+
+
+    <main>
+
+        <div class="main-area">
+
+          <div class="something">
+
+            <select class="form-select" aria-label="Default select example">
+              <option selected>All</option>
+              <option value="1">Labeled</option>
+              <option value="2">Unlabeled</option>
+            </select>
+
+            <div class="lhs" id="image-container">
+          
+              <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
+  
+              <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
+  
+              <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
+  
+              <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
+  
+              <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
+  
+              <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
+  
+            </div>
+
+
+          </div>
+
+          
+
+
+          <div class="middle" id="target-div">
+
+          </div>
+
+          <div class="rhs align-items-center">
+
+            <div class="img-name container-fluid">
+              <h6>Name:</h6>
+              <p id="current-image-name"></p>
+            </div>
+
+            <div class="img-name container-fluid">
+              <h6>Added:</h6>
+              <p style="margin: 0;"> date</p>
+            </div>
+
+            <div class="text-white d-flex gap-3 justify-content-center">
+                <i class="fa fa-trash" title="delete image"></i>
+
+                <i class="fa fa-tags" title="view labels"></i>
+            </div>
+
+            
+
+            <hr width="100%" style="color:white">
+
+            <div class="buttons">
+
+              <button type="button" class="btn-next" id="previous-button"><</button>
+
+              <button type="button" class="btn-next" id="next-button">></button>
+
+            </div>
+
+            <hr width="100%" style="color:white">
+
+            <h6 style="color:white">Annotators</h6>
+
+
+            <div class="annotator-images" id="annotators">
+
+              <img src="{% static 'assets/people/6025.jpg' %}" alt="person">
+
+              <img src="{% static 'assets/people/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg' %}" alt="person">
+
+              <img src="{% static 'assets/people/images.jpeg' %}" alt="person">
+
+              <img src="{% static 'assets/people/IMG_1849.jpg' %}" alt="person">
+
+              <img src="{% static 'assets/people/istockphoto-1265576300-612x612.jpg' %}" alt="person">
+
+              <img src="{% static 'assets/people/pexels-photo-718978.jpeg' %}" alt="person">
+
+              <img src="{% static 'assets/people/photo-1563721572772-fbf713fff374.jpeg' %}" alt="person">
+
+            </div>
+
+            <div class="box" id="box"></div>
+
+          </div>
+    </main>
+
+    <script src="{% static 'scripts/creator-project page.js' %}"></script>
+
+      
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
+
+   <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+   {% endblock %}

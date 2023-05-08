@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'styles/signin.css' %}">
+{% endblock %}
+
+{% block title %}
+  | SignIn
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+
+    <div class="main">
+        <div class="main-left">
+            <a href="{% url 'index' %}"><img class="logo-outline" src="{% static 'assets/Group3.png' %}" alt="logo-outline" width="50px"></a>
+            <h1>Hi there!</h1>
+            <p>Please sign up if you don't have an account already to start labeling your images.</p>
+
+            <a href="{% url 'signup' %}"><button id="sign-up-btn" class="sign-btn
+            " type="button">SIGN UP</button></a>
+        </div>
+
+        <div class="main-right">
+
+            <img id="mobile-cta" class="mobile-menu" src="{% static 'assets/menu.svg' %}" alt="menu" width="25px">
+
+            <img id="mobile-cta-2" class="mobile-menu-2"src="{% static 'assets/menu-2.svg' %}" alt="" width="25px">
+
+            <div class="index-nav" id="nav">
+
+                <img id="mobile-exit" class="mobile-menu-exit" src="{% static 'assets/close-outline.svg' %}" alt="" width="25px">
+                
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">TEAM</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+
+            
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Sign in</h1>
+                <div><label for="username_or_email">Username or Email</label></div>
+                <input type="text" id="email
+                " name="username_or_email" required>
+
+                <div><label for="password">Password</label></div>
+                <input type="password" id="password
+                " name="password" required>
+
+            <button style="display: none;" id="signIn" type="submit">SIGN IN</button>
+        </form>
+            {% comment %} // Change and activate the forgot password {% endcomment %}
+            {% comment %} <a href="{% url 'forgotpassword' %}" class="forgotpassword"><p>Forgot password?</p></a> {% endcomment %}
+
+            {% comment %} <p class="signin-creator">You are signing in as <span class="c">Creator {% endcomment %}
+            {% comment %} </span></p> {% endcomment %}
+
+            {% comment %} <p class="signin-annotator"> <input type="checkbox"> Sign in as <span class="a">Annotator</span></p> {% endcomment %}
+
+            <button id="sign-in-btn" class="sign-up-btn" type="submit">SIGN IN</button>
+        </div>
+    </div>
+
+
+    <script>
+        var submitBtn2 = document.getElementById("signIn");
+        
+        document.getElementById("sign-in-btn").addEventListener('click', () => {
+            submitBtn2.click();
+        })
+        
+        const mobileBtn = document.getElementById('mobile-cta')
+            mobileBtn2 = document.getElementById('mobile-cta-2')
+            nav = document.getElementById('nav')
+            mobileBtnExit = document.getElementById('mobile-exit');
+
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+
+        mobileBtn2.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+
+        mobileBtnExit.addEventListener('click', () => {
+            nav.classList.remove('menu-btn');
+        })
+    </script>
+
+{% endblock %}

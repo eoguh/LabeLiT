@@ -1,0 +1,181 @@
+@media screen and (max-width: 600px) {
+
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .background {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+  
+  .background .background-left {
+    width: 100vw;
+    padding-bottom: 20%;
+    border-radius: 15px 15px 0 0;
+  }
+  .background .background-left h1 {
+    font-size: 6vw;
+  }
+
+  .background .background-left p {
+    font-size: 2.5vw;
+
+  }
+
+  .background .background-right {
+    width: 100vw;
+    border-radius: 0 0 15px 15px;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url(../LabeLiT/assets/Background\ image.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.background {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 8px 8px 8px 0px rgba(0, 0, 0, 0.5);
+  width: 90vw;
+  height: 90vh;
+  display: flex;
+  white-space:nowrap;
+}
+
+.background-left {
+  background-color: #E55F6A;
+  border-radius: 15px 0 0 15px;
+  color: #FFF;
+  height: 100%;
+  width: 35vw;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.background-left h1 {
+  font-size: 4vw;
+  height: 20px;
+  display: block;
+  
+}
+
+.background-left p {
+  font-size: 1.2vw;
+  font-weight: normal;
+  display: block;
+}
+
+.sign-in-btn {
+  color: #FFF;
+  background-color: #E55F6A;
+  border: 2px solid white;
+  display: inline-block;
+  border-radius: 25px;
+  width: 150px;
+  height: 50px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.sign-in-btn:hover {
+  color: #E55F6A;
+  background-color: white;
+  border: 2px solid white;
+  border-radius: 25px;
+  font-weight: bolder;
+  width: 200px;
+  height: 50px;
+}
+
+.background-right {
+  background: #FFF;
+  height: 100%;
+  width: 65%;
+  border-radius: 0 15px 15px 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.background-right h1 {
+  font-size: 3vw;
+  color: #E55F6A;
+}
+
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  padding: 30px 20px;
+  box-shadow: 2px 3px 5px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
+}
+
+.sign-up-form input {
+  width: 220px;
+  height: 30px;
+  border: 1px solid #E55F6A;
+  border-radius: 15px;
+  padding: 0 10px;
+}
+
+.sign-up-form input::placeholder {
+ font-weight: 200;
+}
+
+.sign-up-btn {
+  color: #FFF;
+  background-color: #E55F6A;
+  border: 2px solid white;
+  display: inline-block;
+  border-radius: 25px;
+  width: 150px;
+  height: 50px;
+  transition: all 0.4s;
+  cursor: pointer;
+}
+
+.sign-up-btn:hover {
+  color: #E55F6A;
+  background-color: white;
+  border: 2px solid #E55F6A;
+  border-radius: 25px;
+  font-weight: bolder;
+  width: 200px;
+  height: 50px;
+}

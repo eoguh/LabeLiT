@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2020 (64-Bit) -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="8.26772in" height="11.6929in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 8267.72 11692.91"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:xodm="http://www.corel.com/coreldraw/odm/2003">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil0 {fill:#2061C5}
+    .fil2 {fill:#ACD41A}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <rect class="fil0" x="2550.41" y="4397.74" width="900.13" height="843.99" rx="97.98" ry="91.87"/>
+  <g id="_2876341268592">
+   <rect class="fil1" x="2642.94" y="4552.64" width="137.67" height="534.19" rx="19.68" ry="19.53"/>
+   <rect class="fil1" x="3030.06" y="4735.58" width="137.67" height="342.22" rx="19.68" ry="12.51"/>
+   <rect class="fil2" x="3026.88" y="4552.64" width="137.68" height="137.68" rx="90.55" ry="23.15"/>
+   <rect class="fil1" transform="matrix(1.11102E-14 -0.830006 0.505415 2.64845E-14 2642.94 5086.83)" width="165.87" height="648.85" rx="23.72" ry="23.72"/>
+   <rect class="fil1" transform="matrix(1.11102E-14 -0.830006 0.505415 2.64845E-14 3030.06 5077.8)" width="165.87" height="648.85" rx="23.72" ry="23.72"/>
+  </g>
+ </g>
+</svg>

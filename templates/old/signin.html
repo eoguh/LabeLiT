@@ -1,0 +1,66 @@
+
+{% extends "base.html" %}
+
+
+
+{% block title %}
+| Sign In
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+    <div class="main-bg">
+        <div class="bg-left">
+            <div class="square"></div>
+            <div class="logo">
+                <a href="{% url 'index' %}"><img src="{% static '/static_images/assets/Group_3.png' %}" alt="labelit logo outline" width="80px"></a>
+            </div>
+
+            <div class="hello-there">
+                <h1>Hello there!</h1>
+                <p>Please sign up to create your account
+                    <br> and get on with your first project.</p>
+            </div>
+
+            <div class="signin-btn">
+                <a href="{% url 'signup' %}"><button>SIGN UP</button></a>
+            </div>
+        </div>
+
+        <div class="bg-right">
+            <div class="create-account">
+                <h1>Sign In</h1>
+            </div><br><br>
+            <div class="form">
+                <form class="signup-form" method="POST">
+                    {% csrf_token %}
+                    
+                    <input name="username" placeholder="Email or Username">
+
+                    <input type="password" name="password" id="password" placeholder="Password">
+
+                    <div class="forgot-pass"><a href="forgotpassword.html">Forgot password?</a>
+                    </div>
+
+                    <div class="sign-in-as">
+                        <p>You are signing in as <span class="c">Creator</span></p>
+                    </div>
+                            
+                    <div class="decision">
+
+                        <div class="checkbox">
+                            <input type="checkbox">
+                        </div>
+
+                        <div class="ann-option">
+                            <p class="text">Sign in as <span class="a">Annotator</span></p>
+                        </div>
+                    </div>
+                       
+                    <button type="submit" class="signup-btn" id="signIn">SIGN IN</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}

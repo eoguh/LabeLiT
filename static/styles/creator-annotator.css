@@ -1,0 +1,26 @@
+table img {
+    width: 50px;
+}
+
+tr a {
+    font-size: 12px;
+}
+
+.date-added {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+#assign-to-project, #remove-annotator {
+    cursor: pointer;
+}
+
+#assign-to-project:hover {
+    color: green;
+}
+
+#remove-annotator:hover {
+    color: red;
+}
+
+

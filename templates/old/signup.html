@@ -1,0 +1,56 @@
+
+{% extends "base.html" %}
+
+
+
+{% block title %}
+| Sign Up
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+    <div class="main-bg">
+        <div class="bg-left">
+            <div class="square"></div>
+            <div class="logo">
+                <a href="{% url 'signup' %}"><img src="{% static '/static_images/assets/Group_3.png' %}" alt="labelit logo outline" width="80px"></a>
+            </div>
+
+            <div class="welcome-back">
+                <h1>Welcome Back!</h1>
+                <p>If you already have an account please <br> sign in to keep connected.</p>
+            </div>
+
+            <div class="signin-btn">
+                <a href="{% url 'signin' %}"><button>SIGN IN</button></a>
+            </div>
+        </div>
+
+        <div class="bg-right">
+            <div class="create-account">
+                <h1>Create Account</h1>
+            </div><br><br>
+            <div class="form">
+                <form class="signup-form" method="POST">
+                    {% csrf_token %}
+                    <input name="first_name" placeholder="First name">
+
+                    <input name="last_name" placeholder="Last name">
+
+                    <input name="username" placeholder="Username">
+
+                    <input name="email" type="email" placeholder="Email">
+
+                    <input name="password1" type="password" id="password" placeholder="Password">
+
+                    <input name="password2" type="password" placeholder="Confirm password">
+                    <br>
+
+                    <button type="submit" class="signup-btn" id="signUp" >SIGN UP</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+    

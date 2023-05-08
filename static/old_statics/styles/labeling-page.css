@@ -1,0 +1,208 @@
+:root {
+    --p-color:#2061c5;
+    --s-color: #17cbd8;
+}
+
+body {
+    padding: 0;
+}
+
+.main-area {
+    display: flex;
+}
+
+.lhs {
+    height: 100vh;
+    width: 15vw;
+    background-color: var(--p-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    padding: 10px 5px;
+    overflow-y: scroll;
+}
+
+.middle {
+    height: 100vh;
+    width:70vw;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0 0 0;
+    
+}
+
+
+.rhs {
+    height: 100vh;
+    width:15vw;
+    background-color: var(--p-color);
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    gap: 10px;
+    overflow-y: scroll;
+ 
+}
+
+.lhs select {
+    width: 80%;
+    height: 35px;  
+}
+
+
+.lhs img {
+    width: 90%;
+    transition: transform ease .3s;
+}
+
+.lhs img:hover {
+    cursor: pointer;
+    transform: translate(10px, -5px);
+}
+
+.middle img {
+    width:90%;
+    height:fit-content;
+
+}
+
+.rhs h6 {
+    font-size: smaller;
+    font-weight: 700;
+    margin: 0;
+}
+
+.rhs p {
+    font-size: smaller;
+    font-weight: 400;
+    margin:5px 0;
+}
+
+.img-name {
+    color: white;
+}
+
+#current-image-name {
+    border: 1px solid white;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.label-and-save label {
+    color: white;
+    font-size: smaller;
+    font-weight: bolder;
+}
+
+.save-btn {
+    margin: 10px 0;
+    border: 1px solid white;
+    background-color: white;
+    color: var(--p-color);
+    font-size: smaller;
+    font-weight: 500;
+    padding: 2px 20px;
+    border-radius: 2px;
+    transition:  ease .4s;
+}
+
+.save-btn:hover {
+    background-color: var(--p-color);
+    color: white;
+}
+
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+}
+
+.btn-next {
+    border: solid 1px white;
+    background: var(--p-color);
+    color: white;
+    padding: 0 8px 2px 8px;
+}
+
+.btn-next:hover {
+    border: solid 1px white;
+    background: white;
+    color: var(--p-color);
+}
+
+.btn-next:disabled {
+    background-color: rgba(255, 255, 255, 0.314);
+    border: 1px solid rgba(255, 255, 255, 0);
+    color: rgba(255, 255, 255, 0.314);
+}
+
+.image-details {
+    color: white;
+    text-overflow: ellipsis;
+}
+
+.p-bar {
+    width: 100%;
+    height: 8px;
+    background-color: white;
+    border-radius: 10px;
+
+}
+
+.p-indicator {
+    background-color: #17cbd8;
+    width: 68%;
+    height: 100%;
+    border-radius: 10px 0 0 10px;
+}
+.rhs hr {
+    margin: 6px;
+}
+
+.card-body {
+    color:#082e68;
+    padding: 5px;
+}
+
+
+
+
+@media only screen and (max-width:992px) {
+
+    .main-area {
+        flex-direction: column;
+    }
+    
+    .lhs {
+        height: auto;
+        width: 100vw;
+        flex-direction: row;
+        overflow-y: unset;
+        overflow-x: scroll;
+    }
+
+    .middle {
+        height:auto;
+        width: 100vw;
+        padding-bottom: 20px;
+    }
+
+    .rhs {
+        height: auto;
+        width: 100vw;
+    }
+
+    .lhs select {
+        width: 25vw;
+    }
+
+    .lhs img {
+        width: 10vw;
+    }
+    
+}
+

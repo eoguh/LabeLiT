@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+
+{% block extrahead %}
+{% load static %}
+    <link rel="stylesheet" href="{% static 'styles/signin.css' %}">
+{% endblock %}
+
+{% block title %}
+  | SignUp
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+    <div class="main">
+        <div class="main-left">
+            <a href="{% url 'index' %}"><img class="logo-outline" src="{% static 'assets/logo.png' %}" alt="logo-outline" width="50px"></a>
+            <h1>Welcome Back!</h1>
+            <p>Please sign in if you already have an account to pick up from where you left off!</p>
+
+            <a href="{% url 'signin' %}"><button id="sign-in-btn" class="sign-btn
+            " type="button">SIGN IN</button></a>
+        </div>
+
+        <div class="main-right">
+
+            <img id="mobile-cta" class="mobile-menu" src="{% static 'assets/menu.svg' %}" alt="menu" width="25px">
+
+            <img id="mobile-cta-2" class="mobile-menu-2"src="{% static 'assets/menu-2.svg' %}" alt="" width="25px">
+
+            <div class="index-nav" id="nav">
+
+                <img id="mobile-exit" class="mobile-menu-exit" src="{% static 'assets/close-outline.svg' %}" alt="" width="25px">
+                
+                <ul>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">TEAM</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul>
+            </div>
+
+            
+            <form method="POST">
+                {% csrf_token %}
+                <h1>Sign up</h1>
+                <div><label for="first_name">Full name</label></div>
+                <input type="text" id="firstname
+                " name="full_name" required>
+
+                <div><label for="username">Username</label></div>
+                <input type="text" id="lastname
+                " name="username" required>
+
+                <div><label for="email">Email</label></div>
+                <input type="text" id="email
+                " name="email" required>
+
+                <div><label for="password1">Password</label></div>
+                <input type="password" id="password
+                " name="password1" required>
+
+                <div><label for="password2">Confirm password</label></div>
+                <input type="password" id="confirmpassword
+                " name="password2" required>
+                
+                <button style='display: none;' id="signUp" type="submit"></button>
+
+            </form>
+            <button id="sign-up-btn" class="sign-up-btn" type="submit">SIGN UP</button>
+
+        </div>
+    </div>
+
+
+    <script>
+        var submitBtn2 = document.getElementById("signUp");
+        
+        document.getElementById("sign-up-btn").addEventListener('click', () => {
+            submitBtn2.click();
+        })
+        
+        const mobileBtn = document.getElementById('mobile-cta')
+            mobileBtn2 = document.getElementById('mobile-cta-2')
+            nav = document.getElementById('nav')
+            mobileBtnExit = document.getElementById('mobile-exit');
+
+        mobileBtn.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+
+        mobileBtn2.addEventListener('click', () => {
+            nav.classList.add('menu-btn');
+        })
+
+        mobileBtnExit.addEventListener('click', () => {
+            nav.classList.remove('menu-btn');
+        })
+    </script>
+
+{% endblock %}

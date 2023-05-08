@@ -1,0 +1,241 @@
+:root {
+        --p-color:#2061c5;
+        --s-color: #17cbd8;
+    }
+    
+
+* {
+    box-sizing: border-box;
+}
+
+
+
+
+body {
+    padding: 30px;
+    background-color: #eeeef4;
+}
+
+.navbar-brand {
+    font-weight: bolder;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    place-content: space-between;
+    gap:20px;
+}
+
+.welcome {
+    background-color: white;
+    width: 48%;
+    display: flex;
+    justify-content: space-between;
+    color:#042a63;
+    box-shadow: 4px 4px 4px -2px rgb(0, 0, 0, 0.2);
+}
+
+.welcome-first {
+    width: 48%;
+}
+
+.dashboard-image {
+    width: 48%;
+    display: flex;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dashboard-image img {
+    position: absolute;
+    width: 250px;
+    margin: -25px 0 0 0px;
+}
+
+.welcome p {
+    margin: 0;
+    font-weight: 500;
+    width: 50;
+}
+
+.welcome span {
+    font-weight: 600;
+    position: absolute;
+    z-index: 999;
+    margin-left: 4px;
+}
+
+.account-details {
+    background-color: var(--p-color);
+    width: 48%;
+    height: auto;
+    box-shadow: 4px 4px 4px -2px rgb(0, 0, 0, 0.2);
+}
+
+.account-main {
+    width: 100%;
+    display: flex;
+    place-content: space-between;
+    color: white;
+    font-weight: 300;
+
+}
+
+.account-main span {
+    font-weight: 500;
+}
+
+.logout-btn {
+    border: 1px solid white;
+    background-color: var(--p-color);
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    transition: all ease .1s;
+}
+
+.logout-btn:hover {
+    background-color: white;
+    color: var(--p-color);
+    font-weight: 500;
+  
+}
+
+.small-box {
+    width: 22%;
+    background-color: white;
+    padding: 10px;  
+    box-shadow: 4px 4px 4px -2px rgb(0, 0, 0, 0.2);
+}
+
+.sb-h5 {
+    color: var(--p-color);
+}
+
+.small-box-h5 {
+    font-weight: bolder;
+    display: flex;
+    width: 100%;
+    place-content: space-between;
+    justify-content: baseline;
+}
+
+
+.percent {
+    font-size: smaller;
+    font-weight: 600;
+    color: var(--p-color)
+}
+
+.progress-bar {
+    width: 100%;
+    height: 10px;
+    background-color: white;
+    border-radius: 2px;
+    border: 1px solid var(--p-color);
+    box-shadow: 4px 4px 4px -2px rgb(0, 0, 0, 0.2);
+}
+
+.progress-indicator{
+    background-color: var(--p-color);
+    width: 50%;
+    height: 100%;
+}
+
+.state {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding-top: 5px;
+}
+.progress-number {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.good {
+    color: var(--p-color);
+}
+
+.bad {
+    color: #d32828;
+}
+
+
+.new-p {
+    margin: 0;
+    padding-top: 5px;
+}
+
+.new {
+    text-decoration: none;
+    color: var(--p-color);
+    font-weight: 600;
+    padding: 1px 1px 1px 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    column-gap: 7px;
+}
+
+.new:hover {
+    background-color: #e2eefa;
+    border-radius: 2px;
+}
+
+.recents {
+    background-color: white;
+    width: 48%;
+    padding: 10px;
+    box-shadow: 4px 4px 4px -2px rgb(0, 0, 0, 0.2);
+}
+
+table {
+    font-size: smaller;
+}
+
+/*.accordion {
+    display: none;
+}*/
+
+
+@media only screen and (max-width: 992px) {
+    main {
+        flex-direction: column;
+    }
+
+    .my-box {
+        width: 100%;
+    }
+
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    .my-box-2 {
+        width: 100%;
+    }
+
+    .dashboard-image {
+        display: none;
+    }
+
+    .welcome {
+
+        text-align: center;
+    }
+
+    .welcome span {
+        position: unset;
+    }
+
+    .account-main {
+        flex-direction: column;
+    }
+
+}
+

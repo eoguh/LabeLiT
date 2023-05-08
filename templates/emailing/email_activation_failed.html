@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+
+
+{% block title %}
+| Email Verification failed
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+<div class="background">
+    <div class ="background-left">
+      <h1>Email Verification failed!</h1>
+      <p>If you already have an account <br>please sign in to keep connected.</p><br>
+      <a href="{% url 'creators-dashboard' %}"><button type="button" class="sign-in-btn">DASHBOARD</button></a>
+      <a href="{% url 'signin' %}"><button type="button" class="sign-in-btn">signIn</button></a>
+      <a href="{% url 'signup' %}"><button type="button" class="sign-in-btn">signUp</button></a>
+      
+    </div>
+    </div>
+  </div>
+
+{% endblock content %}

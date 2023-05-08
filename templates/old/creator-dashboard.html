@@ -1,0 +1,315 @@
+
+{% extends 'base2.html' %}
+
+{% block extrahead %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+
+{% endblock %}
+
+{% block title %} | Creator Dashboard{% endblock %}
+
+{% block content %}
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
+        <div class="container-fluid">
+          <a class="navbar-brand" style="color:#2061c5" href="{% url 'index' %}"> <img src="{% static 'static_images/assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="{% url 'creators-dashboard' %}">Dashboard</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'creators-projects' %}">Projects</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'creators-annotators' %}">Annotators</a>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Account
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">Edit account name</a></li>
+                  <li><a class="dropdown-item" href="#">Change profile picture</a></li>
+                  <li>
+                    <li><a class="dropdown-item" href="#">Change password</a></li>
+                  <li>
+                    
+                    <hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="#">Delete account</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  More
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <li><a class="dropdown-item" href="#">About</a></li>
+                  <li><a class="dropdown-item" href="#">Team</a></li>
+                  <li><a class="dropdown-item" href="#">Contact us</a></li>
+                </ul>
+              </li>
+            </ul>
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+      <main>
+        <div class="welcome my-box rounded p-2 px-4">
+
+          <div class="welcome-first my-box-2">
+
+          <h1 class="h1" style="font-size: 30px; white-space: nowrap;">Welcome, <span style="color:#2061c5; font-weight: bolder;"> {{user.first_name}}</span></h1>
+          
+          <p>Created projects: <span>12</span></p>
+
+          <p>Annotators: <span>19</span></p>
+
+          <p style="margin-bottom: 20px;">Joined projects: <span>2</span></p>
+
+          <button type="button" class="btn btn-outline-primary rounded w-40">Sign in</button> as Annotator
+          </div>
+
+          <div class="dashboard-image">
+
+            <img class="img-fluid" src="{% static 'static_images/assets/face_id.png' %}" alt="">
+          </div>
+
+          
+        </div>
+
+
+
+        <div class="accordion d-md-none" id="accordionExample">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <h5 class="sb-h5">Account Details</h5>
+              </button>
+            </h2>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <p class="acc-dets">First name: <span class="values">Andrew</span></p>
+
+              <p class="acc-dets">Last name: <span class="values">Adedero</span></p>
+
+              <p class="acc-dets">Email: <span class="values">andrewadedero@gmail.com</span></p>
+
+              <p class="acc-dets">Account type: <span class="values">Creator</span></p>
+
+              <p class="acc-dets">Creator ID: <span class="values">AA1101211212</span></p>
+
+              <p class="acc-dets">Creation date: <span class="values">12/06/2022</span></p>
+              </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="account-details my-box rounded p-2 px-4 d-none d-md-block">
+          <h4 class="h4 text-white">Account details</details></h4>
+
+          <div class="account-main">
+
+            <div class="account-twin my-box">
+              <p class="acc-dets">First name: <span class="values">{{user.first_name}}</span></p>
+
+              <p class="acc-dets">Last name: <span class="values">{{user.last_name}}</span></p>
+
+              <p class="acc-dets">Email: <span class="values">{{user.email}}</span></p>
+            </div>
+
+
+            <div class="account-twin my-box">
+              <p class="acc-dets">Account type: <span class="values">Creator</span></p>
+
+              <p class="acc-dets">Creator ID: <span class="values">AA1101211212</span></p>
+
+              <p class="acc-dets">Creation date: <span class="values">{{user.date_joined|date:"m/d/Y"}}</span></p>
+            </div>
+          </div>  
+
+          <a href="{% url 'signout' %}"><button type="button" class="logout-btn">Sign out</button></a>
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Created Projects</h5>
+          <h5 class="small-box-h5">{{my_projects.all.count}}<span class="percent">45%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            {% with completed_projects=0 %}
+              {% for project in my_projects %}
+                {% if project.completed %}
+                  {% with completed_projects=completed_projects|add:1 %}
+                  {% endwith %}
+                {% endif %}
+              {% endfor %}
+            {% endwith %}
+           <p class="progress-number">Completed: <span class="good">30{{ completed_projects }}</span></p>
+            <p class="progress-number">Ongoing: <span class="bad">4</span></p>
+          </div>
+
+          <p class="new-p">
+            <a href = "#" class="new">
+              <span>
+                <img src="{% static 'static_images/assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+              </span> Create new project
+            </a>
+          </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Annotators</h5>
+          <h5 class="small-box-h5">{{my_annotators.all.count}}<span class="percent">87%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Assigned: <span class="good">190</span></p>
+             <p class="progress-number">Idle: <span class="bad">11</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <img src="{% static 'static_images/assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+               </span> Add new annotator
+             </a>
+           </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Images</h5>
+          <h5 class="small-box-h5">569 <span class="percent">25%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Labeled: <span class="good">553</span></p>
+             <p class="progress-number">Unlabeled: <span class="bad">16</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <img src="{% static 'static_images/assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+               </span> Add new image
+             </a>
+           </p>
+
+        </div>
+
+        <div class="small-box my-box rounded">
+          <h5 class="sb-h5">Joined Projects</h5>
+          <h5 class="small-box-h5">12 <span class="percent">30%</span></h5>
+          <div class="progress-bar">
+            <div class="progress-indicator"></div>
+          </div>
+
+          <div class="state">
+            <p class="progress-number">Completed: <span class="good">3</span></p>
+             <p class="progress-number">Ongoing: <span class="bad">9</span></p>
+           </div>
+ 
+           <p class="new-p">
+             <a href = "#" class="new">
+               <span>
+                 <img src="{% static 'static_images/assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
+               </span> Join new project
+             </a>
+           </p>
+
+        </div>
+
+
+        <div class="recents rounded my-box">
+          <h5 class="sb-h5">Recent projects</h5>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Project</th>
+                <th scope="col">Images</th>
+                <th scope="col">Annotators</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% comment %} {% for my_project in my_projects|order_by:'id'|slice:3 %} {% endcomment %}
+              {% comment %} {% for my_project in my_projects|sort_objects_by_field:'id' %} {% endcomment %}
+              {% regroup my_projects by id as id_groups %}
+              {% for my_projects in id_groups|dictsortreversed:'grouper'|slice:3 %}
+              {% for my_project in my_projects.list %}
+                  <tr>
+                    <th scope="row"><img src="{% static 'static_images/assets/folder.png' %}" alt="folder-icon" width="40px"></th>
+                    <td><p style="font-weight: 500; margin:0">{{my_project.title}}</p>
+                      <p style="font-size: smaller; margin:0">Created: <span>{{my_project.created_date}}</span></p>
+                    </td>
+                    <td>{{my_project.images.all.count}}</td>
+                    <td>{{my_project.annotators.all.count}}</td>
+                  </tr>
+              {% endfor %}
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+
+
+
+        <div class="recents rounded my-box">
+          <h5 class="sb-h5">Recent annotators</h5>
+
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Name</th>
+                <th scope="col">Projects</th>
+                <th scope="col">Images</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for my_annotator in my_annotators %}
+                <tr>
+                  <th scope="row"><img src="{% static 'static_images/assets/Annotator_1.png' %}" alt="folder-icon" width="40px"></th>
+                  <td><p style="font-weight: 500; margin:0">{{my_annotator.user.username}}</p>
+                    <p style="font-size: smaller; margin:0">Added: <span>22-Jan-2023</span></p>
+                  </td>
+                  <td>21</td>
+                  <td>205</td>
+                </tr>
+              {% endfor %}
+              
+            </tbody>
+          </table>
+        </div>
+
+      </main>
+
+      
+   <script src="bootstrap/js/bootstrap.min.js"></script> 
+{% endblock %}

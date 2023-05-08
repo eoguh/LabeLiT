@@ -1,0 +1,16 @@
+
+{% autoescape off %}
+
+
+Hello {{ name }}!
+
+Please confirm your email address by clicking on the link bellow. 
+
+{{ site_protocol }}{{ domain }}{% url 'activate' userIdb64=userId token=token %}
+This link expires in four hours.
+
+Regards
+LabeLiT Team
+
+{% endautoescape %}
+
