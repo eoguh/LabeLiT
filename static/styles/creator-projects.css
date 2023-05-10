@@ -266,6 +266,27 @@ main {
     border-radius: 5px;
 }
 
+.label-list {
+    position: absolute;
+    z-index: -1;
+    background-color: white;
+    max-height: 470px;
+    width: 300px;
+    padding: 20px;
+    top: 72%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px 3px rgb(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: all ease .3s;
+}
+
+.list-of-labels {
+    height: 120px;
+    overflow-y: scroll;
+}
+
 @media only screen and (max-width: 768px) {
 
 

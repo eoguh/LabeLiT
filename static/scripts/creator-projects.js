@@ -31,3 +31,28 @@ function updateProjectName() {
     // Update the project name with the new input value
     oldProjectName.textContent = newProjectName.value;
 };
+
+const editLabelBox = document.getElementById("label-list-dialog");
+
+function editLabels() {
+
+    editLabelBox.style.opacity = "100%";
+    editLabelBox.style.zIndex = "999";
+};
+
+function closeAddLabel() {
+    editLabelBox.style.zIndex = "-1";
+    editLabelBox.style.opacity = "0";
+    
+}
+
+const listOfLabels = document.getElementById ("listOfLabels");
+const newLabel = document.getElementById("input-label");
+
+function addLabel() {
+    const listItem = document.createElement("li");
+    listItem.appendChild(document.createTextNode(newLabel.value));
+    listOfLabels.appendChild(listItem);
+    newLabel.value = "";
+};
+

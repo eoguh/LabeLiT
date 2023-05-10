@@ -143,6 +143,28 @@
           </div>
         </form>
 
+        <div class="label-list" id="label-list-dialog">
+          <h5 id = "project-name" class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;">Project Name
+          </h5>
+
+          <form action="" class="d-flex flex-column gap-1">
+            <label for="addLabel">Enter New Label</label>
+            <input type="text" name="addLabel" id="input-label">
+            <button class="btn-primary edit-project-name-submit-btn" onclick="addLabel()">Submit</button>
+          </form>
+
+          <ul class= "list-unstyled p-0 list-of-labels" id="listOfLabels">
+            <li id="label0"><i id="closeLabel0" class="fa fa-close"></i> Label 1</li>
+            <li id="label1"><i id="closeLabel1" class="fa fa-close"></i> Label 2</li>
+            <li id="label2"><i id="closeLabel2" class="fa fa-close"></i> Label 3</li>
+            <li id="label3"><i id="closeLabel3" class="fa fa-close"></i> Label 4</li>
+            
+          </ul>
+
+          <button class="btn-danger edit-project-name-submit-btn" onclick="closeAddLabel()">Cancel</button>
+
+        </div>
+
 
 
 
@@ -165,11 +187,10 @@
 
                     <div class="edit-icons d-flex gap-3">
                       <i class="fa fa-edit" id="edit-project-name" onclick="editProjectName()"></i>
-                      <i class="fa fa-tag"></i>
+                      <i class="fa fa-tag" id="edit-labels" onclick="editLabels()"></i>
                       <i class="fa fa-image"></i>
                       <i class="fa fa-arrow-up"></i>
                       <i class="fa fa-trash trash"></i>
-
                     </div>
                   </div>
 
