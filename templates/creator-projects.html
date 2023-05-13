@@ -78,29 +78,29 @@
       <div class="overlay" id="myNav">
 
 
-      <div class="new-project-popup" id="popup">
-        <div class="popup-header d-flex">
+        <div class="new-project-popup" id="popup">
+         <div class="popup-header d-flex">
           <h6 style="color: #2061c5; font-size: 18px; font-weight: 700;">New Project</h6>
 
           <i id= "popup-exit" class="fa fa-close"></i>
           
-        </div>
-        <hr width="100%">
+          </div>
+         <hr width="100%">
 
-        <form action="" method="get" id="newProjectForm">
-          <label for="title">Project title<span style="color: red;">*</span></label><br>
+          <form action="" method="get" id="newProjectForm">
+            <label for="title">Project title<span style="color: red;">*</span></label><br>
 
-          <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
+            <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
 
-          <label for="description">Description</label><br>
+            <label for="description">Description</label><br>
 
-          <textarea class="rounded" type="text" id="description" name="description" form="newProjectForm" cols="30px" rows="10px" maxlength="250"></textarea>
-          
-          <br><br>
-          <input class="rounded" type="submit" value="Submit" onclick="addProject()">
-        </form> 
-      </div>
-    </div>
+            <textarea class="rounded" type="text" id="description" name="description" form="newProjectForm" cols="30px" rows="10px" maxlength="250"></textarea>
+            
+            <br><br>
+            <input class="rounded" type="submit" value="Submit" onclick="addProject()">
+         </form> 
+       </div>
+     </div>
 
 
       <main>
@@ -143,27 +143,28 @@
           </div>
         </form>
 
-        <div class="label-list" id="label-list-dialog">
-          <h5 id = "project-name" class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;">Project Name
-          </h5>
 
-          <form action="" class="d-flex flex-column gap-1">
-            <label for="addLabel">Enter New Label</label>
-            <input type="text" name="addLabel" id="input-label">
-            <button class="btn-primary edit-project-name-submit-btn" onclick="addLabel()">Submit</button>
-          </form>
+          <div class="label-list" id="label-list-dialog">
+            <h5 id = "project-name" class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;">Project Name
+            </h5>
+  
+            <div  class="d-flex flex-column gap-1">
+              <label for="addLabel">Enter New Label</label>
+              <input type="text" name="addLabel" id="input-label" aria-required="true">
+              <button type="button" class="btn-primary edit-project-name-submit-btn" onclick="addLabel()">Submit</button>
+            </div>
+  
+            <ul class= "list-unstyled p-0 list-of-labels" id="listOfLabels">
+          
+              
+            </ul>
 
-          <ul class= "list-unstyled p-0 list-of-labels" id="listOfLabels">
-            <li id="label0"><i id="closeLabel0" class="fa fa-close"></i> Label 1</li>
-            <li id="label1"><i id="closeLabel1" class="fa fa-close"></i> Label 2</li>
-            <li id="label2"><i id="closeLabel2" class="fa fa-close"></i> Label 3</li>
-            <li id="label3"><i id="closeLabel3" class="fa fa-close"></i> Label 4</li>
-            
-          </ul>
+            <button class="btn-danger edit-project-name-submit-btn" onclick="closeAddLabel()">Cancel</button>
 
-          <button class="btn-danger edit-project-name-submit-btn" onclick="closeAddLabel()">Cancel</button>
+          </div>
+   
 
-        </div>
+        
 
 
 
@@ -261,5 +262,19 @@
       
    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+   <script>
+    // Check if URL has a "buttonId" parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const buttonId = urlParams.get("buttonId");
+  
+    // If the "buttonId" parameter exists, simulate a click on the button with the corresponding ID
+    if (buttonId) {
+      const button = document.getElementById(buttonId);
+      if (button) {
+        button.click();
+      }
+    }
+  </script>
 
    {% endblock %}
