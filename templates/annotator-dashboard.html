@@ -26,8 +26,7 @@
               </li>
 
               <li class="nav-item">
-                {% comment %} <a class="nav-link" href="{% url 'annotator-projects' %}">Projects</a> {% endcomment %}
-                {% comment %} <a class="nav-link" href="{% url '' %}">Projects</a> {% endcomment %}
+                <a class="nav-link" href="{% url 'annotator-projects' %}">Projects</a>
               </li>
 
 
@@ -72,16 +71,16 @@
 
           <div class="welcome-first my-box-2">
 
-          <h1 class="h1" style="font-size: 30px; white-space: nowrap;">Welcome, <span style="color:#2061c5; font-weight: bolder;"> Adedero</span></h1>
+          <h1 class="h1" style="font-size: 30px; white-space: nowrap;">Welcome, <span style="color:#2061c5; font-weight: bolder;"> {{user.first_name}}</span></h1><br>
           
-          <p>Joined projects: <span>12</span></p>
+          <p>Joined projects: <span>99</span></p>
 
-          <p>Images annotated: <span>19</span></p>
+          <p>Images annotated: <span>99</span></p>
 
-          <p style="margin-bottom: 20px;">Created projects: <span>2</span></p>
+          <p style="margin-bottom: 20px;">Created projects: <span>9</span></p>
 
-          <button type="button" class="btn btn-outline-primary rounded w-40">Sign in</button> as Creator
-          </div>
+          <a href="{% url 'creators-dashboard' %}"><button type="button" class="btn btn-outline-primary rounded w-40">Switch Mode</button></a> to Creator
+        </div>
 
           <div class="dashboard-image">
 
@@ -102,17 +101,17 @@
             </h2>
             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
-                <p class="acc-dets">First name: <span class="values">Andrew</span></p>
+                <p class="acc-dets">First name: <span class="values">{{ user.first_name }}</span></p>
 
-              <p class="acc-dets">Last name: <span class="values">Adedero</span></p>
+              <p class="acc-dets">Last name: <span class="values">{{ user.last_name }}</span></p>
 
-              <p class="acc-dets">Email: <span class="values">andrewadedero@gmail.com</span></p>
+              <p class="acc-dets">Email: <span class="values">{{ user.email }}</span></p>
 
-              <p class="acc-dets">Account type: <span class="values">Annotator</span></p>
+              <p class="acc-dets">Account Mode: <span class="values">Annotator</span></p>
 
               <p class="acc-dets">Annotator ID: <span class="values">AA1101211212</span></p>
 
-              <p class="acc-dets">Creation date: <span class="values">12/06/2022</span></p>
+              <p class="acc-dets">Creation date: <span class="values">{{user.date_created}}</span></p>
               </div>
             </div>
         </div>
@@ -124,36 +123,36 @@
           <div class="account-main">
 
             <div class="account-twin my-box">
-              <p class="acc-dets">First name: <span class="values">Andrew</span></p>
+              <p class="acc-dets">First name: <span class="values">{{ user.first_name }}</span></p>
 
-              <p class="acc-dets">Last name: <span class="values">Adedero</span></p>
+              <p class="acc-dets">Last name: <span class="values">{{ user.last_name }}</span></p>
 
-              <p class="acc-dets">Email: <span class="values">andrewadedero@gmail.com</span></p>
+              <p class="acc-dets">Email: <span class="values">{{ user.email }}</span></p>
             </div>
 
 
             <div class="account-twin my-box">
-              <p class="acc-dets">Account type: <span class="values">Annotator</span></p>
+              <p class="acc-dets">Account Mode: <span class="values">Annotator</span></p>
 
               <p class="acc-dets">Annotator ID: <span class="values">AA1101211212</span></p>
 
-              <p class="acc-dets">Creation date: <span class="values">12/06/2022</span></p>
+              <p class="acc-dets">Creation date: <span class="values">{{ user.date_joined|date:"d/m/Y" }}</span></p>
             </div>
           </div>  
 
-          <button type="button" class="logout-btn">Sign out</button>
+          <a href="{% url 'signout' %}"><button type="button" class="logout-btn">Sign out</button></a>
         </div>
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Joined Projects</h5>
-          <h5 class="small-box-h5">44  <span class="percent">45%</span></h5>
+          <h5 class="small-box-h5">99<span class="percent">99%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
 
           <div class="state">
-           <p class="progress-number">Completed: <span class="good">30</span></p>
-            <p class="progress-number">Ongoing: <span class="bad">4</span></p>
+           <p class="progress-number">Completed: <span class="good">99</span></p>
+            <p class="progress-number">Ongoing: <span class="bad">9</span></p>
           </div>
 
           <p class="new-p">
@@ -168,14 +167,14 @@
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Images</h5>
-          <h5 class="small-box-h5">201 <span class="percent">87%</span></h5>
+          <h5 class="small-box-h5">999<span class="percent">99%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
 
           <div class="state">
-            <p class="progress-number">Labeled: <span class="good">190</span></p>
-             <p class="progress-number">Unlabeled: <span class="bad">11</span></p>
+            <p class="progress-number">Labeled: <span class="good">999</span></p>
+             <p class="progress-number">Unlabeled: <span class="bad">99</span></p>
            </div>
  
            <p class="new-p">
@@ -190,14 +189,14 @@
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Created Projects</h5>
-          <h5 class="small-box-h5">569 <span class="percent">25%</span></h5>
+          <h5 class="small-box-h5">999<span class="percent">99%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
 
           <div class="state">
-            <p class="progress-number">Completed: <span class="good">553</span></p>
-             <p class="progress-number">Ongoing: <span class="bad">16</span></p>
+            <p class="progress-number">Completed: <span class="good">999</span></p>
+             <p class="progress-number">Ongoing: <span class="bad">99</span></p>
            </div>
  
            <p class="new-p">
@@ -212,13 +211,13 @@
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Annotators</h5>
-          <h5 class="small-box-h5">12 <span class="percent">30%</span></h5>
+          <h5 class="small-box-h5">99<span class="percent">99%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
 
           <div class="state">
-            <p class="progress-number">Assigned: <span class="good">3</span></p>
+            <p class="progress-number">Assigned: <span class="good">9</span></p>
              <p class="progress-number">Idle: <span class="bad">9</span></p>
            </div>
  
@@ -251,8 +250,8 @@
                 <td><p style="font-weight: 500; margin:0">Tropical Diseases</p>
                   <p style="font-size: smaller; margin:0">Created: <span>12-Jan-2023</span></p>
                 </td>
-                <td>34</td>
-                <td>115</td>
+                <td>99</td>
+                <td>999</td>
               </tr>
 
               <tr>
@@ -260,8 +259,8 @@
                 <td><p style="font-weight: 500; margin:0">Automobiles</p>
                   <p style="font-size: smaller; margin:0">Created: <span>3-Jan-2023</span></p>
                 </td>
-                <td>47</td>
-                <td>191</td>
+                <td>99</td>
+                <td>999</td>
               </tr>
 
               <tr>
@@ -269,8 +268,8 @@
                 <td><p style="font-weight: 500; margin:0">Fruits</p>
                   <p style="font-size: smaller; margin:0">Created: <span>1-Dec-2022</span></p>
                 </td>
-                <td>66</td>
-                <td>128</td>
+                <td>99</td>
+                <td>999</td>
               </tr>
             </tbody>
           </table>
@@ -323,6 +322,6 @@
 
       </main>
 
-      <script src="bootstrap/js/bootstrap.min.js"></script> 
+      <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
 
 {% endblock %}

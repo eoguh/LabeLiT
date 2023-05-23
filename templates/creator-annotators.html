@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block title %}
-  | SignIn
+  | My Annotators
 {% endblock %}
 
 {% block content %}
@@ -37,15 +37,15 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="creator-dashboard.html">Dashboard</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'creators-dashboard' %}">Dashboard</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="creator-projects.html">Projects</a>
+                <a class="nav-link" href="{% url 'creators-projects' %}">Projects</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="creator-annotators.html">Annotators</a>
+                <a class="nav-link" href="{% url 'creators-annotators' %}">Annotators</a>
               </li>
 
               <li class="nav-item dropdown">
@@ -163,7 +163,7 @@
             </thead>
 
             <tbody>
-            {% for annotator in annotators %}
+            {% for annotator in my_annotators %}
             <tr>
 
                 <td> <input type="checkbox" name="" id="" class="checkbox"></td>
@@ -188,53 +188,6 @@
             </tr>
             {% endfor %}
 
-
-            <tr>
-
-                <td> <input type="checkbox" name="" id="" class="checkbox"></td>
-
-                <td scope="row"><img src="{% static 'assets/Annotator2.png' %}" alt=""></td>
-
-                <td>John Boyega<br>
-                <a href="">jboyega@yahoo.com</a></td>
-
-                <td>12<br>
-                    <a href="">view project history</a></td>
-
-                <td id ="total-images" style="color:green">653</td>
-
-                <td id ="labeled-images" style="color:red">543</td>
-
-                <td class="date-added">13-Jan-23 09:24 AM</td>
-
-                <td><i class="ri-user-shared-2-line" id="assign-to-project"></i></td>
-
-                <td><i class="ri-delete-bin-6-line" id="remove-annotator"></i></td>
-            </tr>
-
-
-            <tr>
-
-                <td> <input type="checkbox" name="" id="" class="checkbox"></td>
-
-                <td scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt=""></td>
-
-                <td>Alex Hayman<br>
-                <a href="">alexhayman@gmail.com</a></td>
-
-                <td>12<br>
-                    <a href="">view project history</a></td>
-
-                <td id ="total-images" style="color:green">442</td>
-
-                <td id ="labeled-images" style="color:red">33</td>
-
-                <td class="date-added">13-Jan-23 09:24 AM</td>
-
-                <td><i class="ri-user-shared-2-line" id="assign-to-project"></i></td>
-
-                <td><i class="ri-delete-bin-6-line" id="remove-annotator"></i></td>
-            </tr>
            
             </tbody>
         </table>

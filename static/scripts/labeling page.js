@@ -73,6 +73,7 @@
         }
       }
 
+
     function toggleButtons() {
       if (currentIndex === 0) {
         previousButton.disabled = true;

@@ -1,21 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/creator-dashboard.css">
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block extrahead %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
 
-    <title>Annotator Dashboard</title>
-</head>
-<body>
+{% block title %}
+  | Annotators Dashboard
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
         <div class="container-fluid">
-          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="assets/logo.png" alt="labelit-logo" width="50px"> LabeliT</a>
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="{% static 'assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,11 +25,11 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="creator-dashboard.html">Dashboard</a>
+                <a class="nav-link active" aria-current="page" href="{% url 'creators-dashboard' %}">Dashboard</a>
               </li>
 
               <li class="nav-item">
-                <a class="nav-link" href="creator-projects.html">Projects</a>
+                <a class="nav-link" href="{% url 'creators-projects' %}">Projects</a>
               </li>
 
 
@@ -86,7 +87,7 @@
 
           <div class="dashboard-image">
 
-            <img class="img-fluid" src="assets/face id.png" alt="">
+            <img class="img-fluid" src="{% static 'assets/face id.png' %}" alt="">
           </div>
 
           
@@ -160,7 +161,7 @@
           <p class="new-p">
             <a href = "#" class="new">
               <span>
-                <img src="assets/icons/plus-circle-outline.svg" alt="" width="25px">
+                <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
               </span> Join new project
             </a>
           </p>
@@ -204,7 +205,7 @@
            <p class="new-p">
              <a href = "#" class="new">
                <span>
-                 <img src="assets/icons/plus-circle-outline.svg" alt="" width="25px">
+                 <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
                </span>Create new project
              </a>
            </p>
@@ -226,7 +227,7 @@
            <p class="new-p">
              <a href = "#" class="new">
                <span>
-                 <img src="assets/icons/plus-circle-outline.svg" alt="" width="25px">
+                 <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
                </span> Add new annotator
              </a>
            </p>
@@ -248,7 +249,7 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><img src="assets/folder.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">Tropical Diseases</p>
                   <p style="font-size: smaller; margin:0">Created: <span>12-Jan-2023</span></p>
                 </td>
@@ -257,7 +258,7 @@
               </tr>
 
               <tr>
-                <th scope="row"><img src="assets/folder.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">Automobiles</p>
                   <p style="font-size: smaller; margin:0">Created: <span>3-Jan-2023</span></p>
                 </td>
@@ -266,7 +267,7 @@
               </tr>
 
               <tr>
-                <th scope="row"><img src="assets/folder.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">Fruits</p>
                   <p style="font-size: smaller; margin:0">Created: <span>1-Dec-2022</span></p>
                 </td>
@@ -293,7 +294,7 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row"><img src="assets/Annotator 1.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">09091.jpg</p>
                   <p style="font-size: smaller; margin:0">Added: <span>22-Jan-2023</span></p>
                 </td>
@@ -302,7 +303,7 @@
               </tr>
 
               <tr>
-                <th scope="row"><img src="assets/Annotator 2.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/Annotator 2.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">8u8u9w2d.jpg`</p>
                   <p style="font-size: smaller; margin:0">Added: <span>16-Dec-2022</span></p>
                 </td>
@@ -311,7 +312,7 @@
               </tr>
 
               <tr>
-                <th scope="row"><img src="assets/Annotator 1.png" alt="folder-icon" width="40px"></th>
+                <th scope="row"><img src="{% static 'assets/Annotator1.png' %}" alt="folder-icon" width="40px"></th>
                 <td><p style="font-weight: 500; margin:0">ieuixd.png</p>
                   <p style="font-size: smaller; margin:0">Added: <span>1-Dec-2022</span></p>
                 </td>
@@ -325,7 +326,6 @@
       </main>
 
       
-   <script src="bootstrap/js/bootstrap.min.js"></script> 
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
 
-</body>
-</html>
+{% endblock %}
