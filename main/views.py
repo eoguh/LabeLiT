@@ -74,11 +74,8 @@ def signup(request):
 
         user.first_name = first_name
         user.last_name = last_name
-<<<<<<< HEAD
         user.is_active = False
         user.profile_picture = uploaded_file_url  # save uploaded file url to user's profile_picture field
-=======
->>>>>>> origin/main
         user.save()
 
         messages.success(request, "Account has been successfully created! We have sent you an email confirmation letter. confirm your email address to activate your account.")

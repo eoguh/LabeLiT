@@ -1,16 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/creator-dashboard.css">
-    <link rel="stylesheet" href="styles/labeling-page.css">
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block extrahead %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/labeling-page.css' %}">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+{% block title %}
+  | Annotator Labeling
+{% endblock %}
+
+{% block content %}
+{% load static %}
 
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
@@ -233,12 +238,10 @@
         </div>
       </main>
 
-      <script src="scripts/labeling page.js"></script>
+      <script src="{% static 'scripts/labeling page.js' %}"></script>
 
       
    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
 
    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
-
-</body>
-</html>
+{% endblock %}

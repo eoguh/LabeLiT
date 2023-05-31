@@ -89,12 +89,6 @@
         }
       }
 
-<<<<<<< HEAD
-=======
-      
-
-      
->>>>>>> origin/main
 
     function toggleButtons() {
       if (currentIndex === 0) {
