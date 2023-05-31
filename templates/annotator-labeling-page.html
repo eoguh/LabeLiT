@@ -1,24 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles/creator-dashboard.css">
-    <link rel="stylesheet" href="styles/labeling-page.css">
+{% extends 'base.html' %}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% block extrahead %}
+{% load static %}
+  <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/labeling-page.css' %}">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+{% endblock %}
 
-    <link href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/css/bootstrap-switch-button.min.css" rel="stylesheet">
+{% block title %}
+  | Labeling Page
+{% endblock %}
 
-    <title>Labeling Page</title>
-</head>
-<body>
+{% block content %}
+{% load static %}
+
+
 
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #EEEFF4;">
         <div class="container-fluid">
-          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="assets/logo.png" alt="labelit-logo" width="50px"> LabeliT</a>
+          <a class="navbar-brand" style="color:#2061c5" href="#"> <img src="{% static 'assets/logo.png' %}" alt="labelit-logo" width="50px"> LabeliT</a>
 
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -95,17 +98,17 @@
             </select>
 
           
-            <img src="assets/Cars/car1.jpg" alt="">
+            <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
 
-            <img src="assets/Cars/car2.jpg" alt="">
+            <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
 
-            <img src="assets/Cars/car3.jpg" alt="">
+            <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
 
-            <img src="assets/Cars/car3.jpg" alt="">
+            <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
 
-            <img src="assets/Cars/car1.jpg" alt="">
+            <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
 
-            <img src="assets/Cars/car2.jpg" alt="">
+            <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
 
           </div>
 
@@ -200,14 +203,46 @@
 
 
         </div>
-      </main>
 
-      <script src="scripts/labeling page.js"></script>
+
+        <div class="comment-box-wrapper" id="comment-box-wrapper">
+
+          <div class="cbw-top">
+
+            <p class="image-name" id="current-image-name-for-comment"></p>
+
+            <i class=" fa fa-close" id="close-comment"></i>
+          </div>
+
+          <div class="add-comment-picture">
+
+            <h4>Add a comment to this picture</h4>
+
+            <div id="small-target-div">
+            
+            </div>
+
+          </div>
+
+          <form  id="write-comment-form">
+            <textarea type="text" name="comment" id="image-comment" cols="25" rows="3"></textarea>
+            <br>
+
+            <button type="button" class="btn-primary save-comment-btn" id="save-comment">Save</button>
+          </form>
+        </div>
+
+        <div class="comment-icon-wrapper">
+          <button type="button" onclick="writeComment()" class="add-comment-btn" id="commentBubble">
+            <img src=" {% static 'assets\chatbubble.png'%}" alt="add comment icon">
+          </button>
+        </div>
+      </main>
+      
+      <script src="{% static 'scripts/labeling page.js' %}"></script>
 
       
-   <script src="bootstrap/js/bootstrap.min.js"></script> 
+   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
 
    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
-
-</body>
-</html>
+{% endblock %}

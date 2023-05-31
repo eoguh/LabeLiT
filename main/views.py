@@ -204,7 +204,7 @@ def creatorsAnnotators(request):
 def annotatorLabeling(request):
     context = {}
     my_annotators = ""
-    return render(request, 'annotator-labeling page.html', context)
+    return render(request, 'annotator-labeling-page.html', context)
 
 
 def annotatorDashboard(request):
