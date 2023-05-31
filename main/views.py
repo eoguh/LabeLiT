@@ -68,7 +68,7 @@ def signup(request):
         user.first_name = first_name
         user.last_name = last_name
         user.profile_picture = profile_picture
-        user.is_active = True
+        user.is_active = False
         user.save()
 
         messages.success(request, "Account has been successfully created! We have sent you an email confirmation letter. confirm your email address to activate your account.")
@@ -76,7 +76,7 @@ def signup(request):
         # Welcome Email
 
         subject = "Welcome to LabeLiT"
-        message = f"Hello {user.full_name}! \n\nWe are pleased to welcome you as part of us. \nCongratulations on your way to being part of this great innovation.\n\nRegards\LabeLit Team"
+        message = f"Hello {full_name}! \n\nWe are pleased to welcome you as part of us. \nCongratulations on your way to being part of this great innovation.\n\nRegards\LabeLit Team"
         from_email = settings.EMAIL_HOST_USER
         to_list = [user.email]
         send_mail(subject, message, from_email, to_list, fail_silently=True)
@@ -89,7 +89,7 @@ def signup(request):
         message2 = render_to_string(
             "emailing/email_verification.html",
             {
-                "name": user.full_name,
+                "name": full_name,
                 "domain": current_site,
                 "site_protocol": settings.SITE_PROTOCOL,
                 "userId": urlsafe_base64_encode(force_bytes(user.pk)),
@@ -204,7 +204,7 @@ def creatorsAnnotators(request):
 def annotatorLabeling(request):
     context = {}
     my_annotators = ""
-    return render(request, 'annotator-labeling page.html', context)
+    return render(request, 'annotator-labeling-page.html', context)
 
 
 def annotatorDashboard(request):

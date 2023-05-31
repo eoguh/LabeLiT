@@ -160,7 +160,7 @@
           </div>
 
           <p class="new-p">
-            <a href = "#" class="new">
+            <a href = "{% url 'creators-projects' %}" class="new">
               <span>
                 <img src="{% static 'assets/icons/plus-circle-outline.svg' %}" alt="" width="25px">
               </span> Create new project
@@ -295,6 +295,6 @@
       </main>
 
       
-   <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
+  <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
 
 {% endblock %}
