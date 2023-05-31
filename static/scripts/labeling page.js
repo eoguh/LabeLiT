@@ -1,13 +1,21 @@
     const images = Array.from(document.querySelectorAll('#image-container img'));
+
     const targetDiv = document.querySelector('#target-div');
+
     const previousButton = document.querySelector('#previous-button');
+
     const nextButton = document.querySelector('#next-button');
+
     let currentIndex = -1;
+
+
+    
 
     function init() {
         const defaultImage = images[0];
         const clonedImage = defaultImage.cloneNode(true);
         targetDiv.appendChild(clonedImage);
+
         currentIndex = 0;
         updateCurrentImageName();
         toggleButtons();
@@ -20,8 +28,11 @@
         const existingImage = targetDiv.querySelector('img');
         if (existingImage) {
           targetDiv.removeChild(existingImage);
+
         }
         targetDiv.appendChild(clonedImage);
+
+
         currentIndex = images.indexOf(image);
         updateCurrentImageName();
         toggleButtons();
@@ -64,15 +75,26 @@
 
     const currentImageName = document.getElementById('current-image-name');
 
+    const currentImageNameForComment = document.getElementById ('current-image-name-for-comment');
+
     function updateCurrentImageName() {
         const currentImage = targetDiv.querySelector('img');
         if (currentImage) {
           const currentImageSrc = currentImage.getAttribute('src');
           const currentImageNameText = currentImageSrc.split('/').pop();
           currentImageName.textContent = currentImageNameText;
+          
+    
+         currentImageNameForComment.textContent = currentImageNameText;
         }
       }
 
+<<<<<<< HEAD
+=======
+      
+
+      
+>>>>>>> origin/main
 
     function toggleButtons() {
       if (currentIndex === 0) {
@@ -91,5 +113,30 @@
     toggleButtons();
 
     init();
+
+    const targetDiv2 = document.querySelector('#small-target-div');
+
+
+    const currentImageToComment = targetDiv.querySelector('img');
+
+
+
+    const commentBox = document.getElementById('comment-box-wrapper');
+
+    const closeCommentBtn = document.getElementById('close-comment');
+
+    function writeComment() {
+
+      commentBox.style.opacity = "100%";
+      commentBox.style.height = "400px"
+      commentBox.style.zIndex = "999";
+    };
+
+    closeCommentBtn.addEventListener('click', function() {
+      commentBox.style.opacity = "0";
+      commentBox.style.height = "0"
+      commentBox.style.zIndex = "-1";
+    });
+
 
     

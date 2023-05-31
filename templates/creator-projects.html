@@ -78,30 +78,33 @@
       <div class="overlay" id="myNav">
 
 
-      <div class="new-project-popup" id="popup">
-        <div class="popup-header d-flex">
+        <div class="new-project-popup" id="popup">
+         <div class="popup-header d-flex">
           <h6 style="color: #2061c5; font-size: 18px; font-weight: 700;">New Project</h6>
 
           <i id= "popup-exit" class="fa fa-close"></i>
           
-        </div>
-        <hr width="100%">
+          </div>
+         <hr width="100%">
 
+<<<<<<< HEAD
         <form method="POST" id="newProjectForm">
           {% csrf_token %}
           <label for="title">Project title<span style="color: red;">*</span></label><br>
+=======
+>>>>>>> origin/main
 
-          <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
+            <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
 
-          <label for="description">Description</label><br>
+            <label for="description">Description</label><br>
 
-          <textarea class="rounded" type="text" id="description" name="description" form="newProjectForm" cols="30px" rows="10px" maxlength="250"></textarea>
-          
-          <br><br>
-          <input class="rounded" type="submit" value="Submit" onclick="addProject()">
-        </form> 
-      </div>
-    </div>
+            <textarea class="rounded" type="text" id="description" name="description" form="newProjectForm" cols="30px" rows="10px" maxlength="250"></textarea>
+            
+            <br><br>
+            <input class="rounded" type="submit" value="Submit" onclick="addProject()">
+         </form> 
+       </div>
+     </div>
 
 
       <main>
@@ -134,6 +137,41 @@
           </div>
         </div>
 
+        <form class="edit-forms edit-project-name-form" id="edit-project-name-form">
+          <label for="enterProjectName">Enter Project Name</label> <br>
+          <input type="text" name="enterProjectName" id="input-new-project-name">
+
+          <div>
+            <button class="btn-primary edit-project-name-submit-btn" onclick="updateProjectName()">Submit</button>
+            <button class="btn-danger edit-project-name-submit-btn" onclick="closeEditNameForm()">Cancel</button>
+          </div>
+        </form>
+
+
+          <div class="label-list" id="label-list-dialog">
+            <h5 id = "project-name" class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;">Project Name
+            </h5>
+  
+            <div  class="d-flex flex-column gap-1">
+              <label for="addLabel">Enter New Label</label>
+              <input type="text" name="addLabel" id="input-label" aria-required="true">
+              <button type="button" class="btn-primary edit-project-name-submit-btn" onclick="addLabel()">Submit</button>
+            </div>
+  
+            <ul class= "list-unstyled p-0 list-of-labels" id="listOfLabels">
+          
+              
+            </ul>
+
+            <button class="btn-danger edit-project-name-submit-btn" onclick="closeAddLabel()">Cancel</button>
+
+          </div>
+   
+
+        
+
+
+
 
       
 
@@ -149,16 +187,15 @@
                   <div class="name-and-icons d-flex gap-4 justify-content-between align-items-center">
 
                     <div class="project-name">
-                      <a href="{% url 'project-page' my_project.id %}"><h5 class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;">{{ my_project.title }}</h5></a>
+                      <a href="{% url 'project-page' my_project.id %}"><h5 class="Project-title" style="color: #2061c5; font-weight: 600; white-space: nowrap;" id="project-name">{{ my_project.title }}</h5></a>
                     </div>
 
                     <div class="edit-icons d-flex gap-3">
-                      <i class="fa fa-edit"></i>
-                      <i class="fa fa-tag"></i>
+                      <i class="fa fa-edit" id="edit-project-name" onclick="editProjectName()"></i>
+                      <i class="fa fa-tag" id="edit-labels" onclick="editLabels()"></i>
                       <i class="fa fa-image"></i>
                       <i class="fa fa-arrow-up"></i>
                       <i class="fa fa-trash trash"></i>
-
                     </div>
                   </div>
 
@@ -227,5 +264,19 @@
       
    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script> 
    <script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap-switch-button@1.1.0/dist/bootstrap-switch-button.min.js"></script>
+
+   <script>
+    // Check if URL has a "buttonId" parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    const buttonId = urlParams.get("buttonId");
+  
+    // If the "buttonId" parameter exists, simulate a click on the button with the corresponding ID
+    if (buttonId) {
+      const button = document.getElementById(buttonId);
+      if (button) {
+        button.click();
+      }
+    }
+  </script>
 
    {% endblock %}
