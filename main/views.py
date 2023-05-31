@@ -148,7 +148,7 @@ def signin(request):
             user = authenticate(username=username_or_email, password=password_)
             if user is not None:
                 login(request, user)
-            return redirect('signin')
+            return redirect('creators-dashboard')
             messages.error(request, "Invalid Credentials")
     return render(request, "signin.html", context)
 
