@@ -11,10 +11,13 @@ urlpatterns = [
     path('creators-dashboard/', views.creatorsDashboard, name="creators-dashboard"),
     path('creators-projects/', views.creatorsProjects, name="creators-projects"),
     path('creators-annotators/', views.creatorsAnnotators, name="creators-annotators"),
-    path('annotator-labeling/', views.annotatorLabeling, name="annotator-labeling"),
+
     path('annotator-dashboard/', views.annotatorDashboard, name="annotator-dashboard"),
+    path('annotator-projects/', views.annotatorsProjects, name="annotator-projects"),
+    path('annotator-labeling/', views.annotatorLabeling, name="annotator-labeling"),
 
     path('project/<slug>/', views.projectPage, name="project-page"),
+    path('annotating/<slug>/', views.annotatingPage, name="annotating-page"),
     
     path('signup/', views.signup, name="signup"),
     path('signin/', views.signin, name="signin"),
@@ -24,6 +27,6 @@ urlpatterns = [
 
 
 
-# urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-# urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

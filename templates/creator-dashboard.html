@@ -83,7 +83,7 @@
 
           <p style="margin-bottom: 20px;">Joined projects: <span>{{annotating.count}}</span></p>
 
-          {% comment %} <button type="button" class="btn btn-outline-primary rounded w-40">Sign in</button> as Annotator {% endcomment %}
+          <a href="{% url 'annotator-dashboard' %}"><button type="button" class="btn btn-outline-primary rounded w-40">Switch Mode</button></a> to Annotator
           </div>
 
           <div class="dashboard-image">
@@ -111,9 +111,9 @@
 
               <p class="acc-dets">Email: <span class="values">{{user.email}}</span></p>
 
-              <p class="acc-dets">Account type: <span class="values">Creator</span></p>
+              <p class="acc-dets">Account Mode: <span class="values">Creator</span></p>
 
-              <p class="acc-dets">Creator ID: <span class="values">AA1101211999</span></p>
+              <p class="acc-dets">Creator ID: <span class="values"></span></p>
 
               <p class="acc-dets">Creation date: <span class="values">{{user.date_created}}</span></p>
               </div>
@@ -136,7 +136,7 @@
 
 
             <div class="account-twin my-box">
-              <p class="acc-dets">Account type: <span class="values">Creator</span></p>
+              <p class="acc-dets">Account mode: <span class="values">Creator</span></p>
 
               <p class="acc-dets">Creator ID: <span class="values">AA1101211212</span></p>
 
@@ -144,7 +144,7 @@
             </div>
           </div>  
 
-          <button type="button" class="logout-btn">Sign out</button>
+          <a href="{% url 'signout' %}"><button type="button" class="logout-btn">Sign out</button><a>
         </div>
 
         <div class="small-box my-box rounded">
@@ -171,14 +171,14 @@
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Annotators</h5>
-          <h5 class="small-box-h5">{{my_annotators.count}} <span class="percent">87%</span></h5>
+          <h5 class="small-box-h5">{{my_annotators.count}} <span class="percent">99%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
 
           <div class="state">
-            <p class="progress-number">Assigned: <span class="good">190</span></p>
-             <p class="progress-number">Idle: <span class="bad">11</span></p>
+            <p class="progress-number">Assigned: <span class="good">999</span></p>
+             <p class="progress-number">Idle: <span class="bad">99</span></p>
            </div>
  
            <p class="new-p">
@@ -193,7 +193,7 @@
 
         <div class="small-box my-box rounded">
           <h5 class="sb-h5">Images</h5>
-          <h5 class="small-box-h5">{{count_my_images}}<span class="percent">25%</span></h5>
+          <h5 class="small-box-h5">{{my_images.all.count}}<span class="percent">25%</span></h5>
           <div class="progress-bar">
             <div class="progress-indicator"></div>
           </div>
@@ -249,14 +249,14 @@
               </tr>
             </thead>
             <tbody>
-              {% for projects in my_projects|slice:"3" %}
+              {% for project in my_projects|slice:"3" %}
               <tr>
                 <th scope="row"><img src="{% static 'assets/folder.png' %}" alt="folder-icon" width="40px"></th>
-                <td><p style="font-weight: 500; margin:0">{{projects.title}}</p>
-                  <p style="font-size: smaller; margin:0">Created: <span>{{projects.created_date|date:'d/m/y'}}</span></p>
+                <td><p style="font-weight: 500; margin:0">{{project.title}}</p>
+                  <p style="font-size: smaller; margin:0">Created: <span>{{project.created_date|date:'d/m/y'}}</span></p>
                 </td>
-                <td>99</td>
-                <td>99</td>
+                <td>{{project.images.all.count}}</td>
+                <td>{{project.annotators.all.count}}</td>
               </tr>
               {% endfor %}
             </tbody>

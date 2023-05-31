@@ -89,9 +89,6 @@
         }
       }
 
-      
-
-      
 
     function toggleButtons() {
       if (currentIndex === 0) {

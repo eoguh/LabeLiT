@@ -5,6 +5,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.core.files.storage import FileSystemStorage
+from PIL import Image
 from django.contrib import messages
 from django.core.mail import send_mail
 from .tokens import generate_token
@@ -54,21 +56,26 @@ def signup(request):
         if password1 != password2:
             messages.error(request, "Passwords does not match")
             return render(request, 'signup.html')
+        
+        # Image Upload and Resize
+        if request.FILES:
+            profile_picture = request.FILES['profile_picture']
+            fs = FileSystemStorage()
+            filename = fs.save(profile_picture.name, profile_picture)
+            uploaded_file_url = fs.url(filename)
+            img = Image.open(profile_picture)
+            img.thumbnail((500, 500))
+            img.save(fs.path(filename))
 
-        # get the uploaded file data from request.FILES
-        profile_picture_data = request.FILES.get('profile_picture')
-        if profile_picture_data:
-            # save the uploaded file to the default storage
-            profile_picture_name = default_storage.save(profile_picture_data.name, ContentFile(profile_picture_data.read()))
-            profile_picture = f"/media/{full_name}/{profile_picture_name}"
         else:
-            profile_picture = ""
+            uploaded_file_url = None
 
         user = User.objects.create_user(username=username, email=email, password=password1)
+
         user.first_name = first_name
         user.last_name = last_name
-        user.profile_picture = profile_picture
         user.is_active = False
+        user.profile_picture = uploaded_file_url  # save uploaded file url to user's profile_picture field
         user.save()
 
         messages.success(request, "Account has been successfully created! We have sent you an email confirmation letter. confirm your email address to activate your account.")
@@ -171,8 +178,8 @@ def creatorsDashboard(request):
     annotating = Project.objects.filter(annotators=annotator)
     my_projects = Project.objects.filter(creator=request.user).order_by('-created_date')
     projects = Project.objects.filter(creator=request.user)
-    count_my_images = Image.objects.filter(project__in=projects).count()
-    context['count_my_images'] = count_my_images
+    my_images = Image.objects.filter(uploaded_by=request.user)
+    context['my_images'] = my_images
     # context['annotators_of_last_project'] = annotators_of_last_project
     context['annotating'] = annotating
     context['my_projects'] = my_projects
@@ -182,6 +189,12 @@ def creatorsDashboard(request):
 
 def creatorsProjects(request):
     context = {}
+
+    if request.method=="POST":
+        project_title = request.POST['title']
+        project_description = request.POST['description']
+        Project.objects.create(creator=request.user, title=project_title, description=project_description)
+    
     my_projects = Project.objects.filter(creator=request.user)
     context['my_projects'] = my_projects
     return render(request, 'creator-projects.html', context)
@@ -190,14 +203,29 @@ def creatorsProjects(request):
 
 def projectPage(request, slug):
     project = get_object_or_404(Project, pk=slug)
+    project_annotators = project.annotators.all()
     context = {}
     context['project'] = project
+    context['project_annotators'] = project_annotators
     return render(request, 'creator-project-page.html', context)
 
 
 
 def creatorsAnnotators(request):
     context = {}
+    projects = Project.objects.filter(creator=request.user)
+
+    annotators = []
+
+    # Loop through each project to get its annotators
+    for project in projects:
+        # Get the annotators of the project and add them to the list of annotators
+        project_annotators = project.annotators.all()
+        annotators += list(project_annotators)
+
+    # Remove duplicates from the list of annotators
+    annotators = list(set(annotators))
+    context["my_annotators"] = annotators
     return render(request, 'creator-annotators.html', context)
 
 
@@ -211,4 +239,18 @@ def annotatorDashboard(request):
     context = {}
     return render(request, 'annotator-dashboard.html', context)
 
+
+
+
+
+
+
+def annotatorsProjects(request):
+    context = {}
+    return render(request, 'annotator-projects.html', context)
+
+
+def annotatingPage(request, slug):
+    context = {}
+    return render(request, 'annotator-labeling-page.html', context)
 

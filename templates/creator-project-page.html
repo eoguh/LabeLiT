@@ -4,7 +4,7 @@
 {% load static %}
   <link rel="stylesheet" href="{% static 'styles/creator-dashboard.css' %}">
   <link rel="stylesheet" href="{% static 'styles/labeling-page.css' %}">
-  <link rel="stylesheet" href="{% static 'styles/creator-project page.css' %}">
+  <link rel="stylesheet" href="{% static 'styles/creator-project-page.css' %}">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -79,7 +79,7 @@
     <section class="d-flex p-2 align-items-center flex-wrap">
 
         <div class="d-flex align-items-baseline flex-wrap gap-2">
-            <h4 style="color:#2061c5; font-weight: bolder">Automobiles</h4>
+            <h4 style="color:#2061c5; font-weight: bolder">{{project.title}}</h4>
 
             <div>
                 <input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Open" data-offlabel="Completed" data-onstyle="primary" data-offstyle="success" checked data-size="xs">
@@ -96,19 +96,16 @@
             </div>
 
 
-            <p>Images: <span>104</span></p>
-            <p>Annotators: <span>54</span></p>
+            <p>Images: <span>{{project.images.count}}</span></p>
+            <p>Annotators: <span>{{project.annotators.count}}</span></p>
 
-            <p>Progress: <span>68%</span>
+            <p>Progress: <span>99%</span>
             </p>
               
               
 
         </div>
         
-
-
-       
     </section>
 
     <hr width="100%">
@@ -125,7 +122,7 @@
             <div class="card card-body">
 
               <p>
-                Some placeholder content for the collapse component. This panel is hidden by default but revealed when the user activates the relevant trigger.
+                {{project.description}}
               </p>
               
             </div>
@@ -147,18 +144,13 @@
             </select>
 
             <div class="lhs" id="image-container">
+
+              {% for image in project.images.all %}
           
-              <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
-  
-              <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
-  
-              <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
-  
-              <img src="{% static 'assets/Cars/car3.jpg' %}" alt="">
-  
-              <img src="{% static 'assets/Cars/car1.jpg' %}" alt="">
-  
-              <img src="{% static 'assets/Cars/car2.jpg' %}" alt="">
+              <img src="{{image.image.url}}" alt="">
+              <pc style="color: white;">{{image.name}}</p>
+              
+              {% endfor %}
   
             </div>
 
@@ -209,19 +201,15 @@
 
             <div class="annotator-images" id="annotators">
 
-              <img src="{% static 'assets/people/6025.jpg' %}" alt="person">
+              {% for annotator in project.annotators.all %}
+                {% if not annotator.user.profile_picture.url %}
+                  <img src="{% static '/assets/default_profile_image.png' %}" alt="annotator">
+                  <p>{{annotator.user.first_name}}</p>
+                {% else %}
+                  <img src="{{ annotator.user.profile_picture.url }}" alt="annotator">
+                {% endif %}
 
-              <img src="{% static 'assets/people/ap22312071681283-0d9c328f69a7c7f15320e8750d6ea447532dff66.jpg' %}" alt="person">
-
-              <img src="{% static 'assets/people/images.jpeg' %}" alt="person">
-
-              <img src="{% static 'assets/people/IMG_1849.jpg' %}" alt="person">
-
-              <img src="{% static 'assets/people/istockphoto-1265576300-612x612.jpg' %}" alt="person">
-
-              <img src="{% static 'assets/people/pexels-photo-718978.jpeg' %}" alt="person">
-
-              <img src="{% static 'assets/people/photo-1563721572772-fbf713fff374.jpeg' %}" alt="person">
+              {% endfor %}
 
             </div>
 

@@ -87,8 +87,9 @@
           </div>
          <hr width="100%">
 
-          <form action="" method="get" id="newProjectForm">
-            <label for="title">Project title<span style="color: red;">*</span></label><br>
+        <form method="POST" id="newProjectForm">
+          {% csrf_token %}
+          <label for="title">Project title<span style="color: red;">*</span></label><br>
 
             <input class="rounded" type="text" id="title" name="title" form="newProjectForm" required><br><br>
 
@@ -207,7 +208,7 @@
 
                     <tbody>
                       <tr>
-                        <td style="white-space: nowrap;">{{my_project.created_date|date:"m/d/Y"}}</td>
+                        <td style="white-space: nowrap;">{{my_project.created_date|date:"d/m/Y"}}</td>
                         <td><input type="checkbox" data-toggle="switchbutton" checked data-onlabel="Open" data-offlabel="Completed" data-onstyle="primary" data-offstyle="success" checked data-size="xs"></td>
                         <td class="num-value">{{my_project.images.all.count}}</td>
                         <td class="num-value">{{my_project.annotators.all.count}}</td>
@@ -221,11 +222,9 @@
                       {% if annotator.user.profile_picture %}
                           <img src="{{ annotator.user.profile_picture.url }}" alt="annotator">
                       {% else %}
-                          <img src="{% static '/static_images/assets/default_prifile_image.png' %}" class='annotator-thumbnail' alt="annotator">
+                          <img src="{% static '/assets/default_profile_image.png' %}" class='annotator-thumbnail' alt="annotator">
                       {% endif %}
                     {% endfor %}
-                    <img src="{% static '/static_images/assets/Annotator2.png' %}" alt="">
-                    <img src="{% static '/static_images/assets/Annotator2.png' %}" alt="">
 
                     <i class="fa fa-arrow-circle-right"></i>
                     <i class="fa fa-plus-circle"></i>
@@ -234,7 +233,7 @@
                   <div class="d-flex justify-content-between">
                     <h6 style="color: #676767; margin-top: 10px">Progress</h6>
 
-                    <h6 style="color: #2061c5; margin-top: 10px; font-weight: 400;">57%</h6>
+                    <h6 style="color: #2061c5; margin-top: 10px; font-weight: 400;">99%</h6>
                   </div>
 
                   <div class="progress-bar-2">
